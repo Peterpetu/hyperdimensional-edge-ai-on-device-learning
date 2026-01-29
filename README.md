@@ -3,7 +3,7 @@
 [![Platform](https://img.shields.io/badge/Platform-ATmega328P-blue.svg)](https://www.microchip.com/en-us/product/ATmega328P)
 [![Language](https://img.shields.io/badge/Language-C99-green.svg)](https://en.wikipedia.org/wiki/C99)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Build](https://github.com/Peterpetu/arduino-ml-project/actions/workflows/build.yml/badge.svg)](https://github.com/Peterpetu/arduino-ml-project/actions)
+[![Build](https://github.com/Peterpetu/hyperdimensional-edge-ai-on-device-learning/actions/workflows/build.yml/badge.svg)](https://github.com/Peterpetu/hyperdimensional-edge-ai-on-device-learning/actions)
 
 ## Overview
 
