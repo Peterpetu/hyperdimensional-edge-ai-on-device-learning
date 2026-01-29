@@ -156,18 +156,21 @@ jobs:
     - name: Generate coverage report
       run: |
         mkdir -p docs/coverage
-        # Find gcov data files from PlatformIO build
-        GCDA_DIR=$(find .pio -name "*.gcda" -printf '%h\n' 2>/dev/null | head -1)
-        if [ -n "$GCDA_DIR" ]; then
-          # Capture coverage data
-          lcov --capture --directory "$GCDA_DIR" --output-file coverage_raw.info --rc lcov_branch_coverage=1 2>/dev/null || true
+        # Capture coverage from entire PlatformIO build directory
+        if [ -d ".pio/build/coverage" ]; then
+          # Capture all coverage data from build directory
+          lcov --capture --directory .pio/build/coverage --output-file coverage_raw.info --rc lcov_branch_coverage=1 2>/dev/null || true
           # Extract ONLY src/hdc files (the code we're actually testing)
           lcov --extract coverage_raw.info '*/src/hdc/*' --output-file coverage.info --rc lcov_branch_coverage=1 2>/dev/null || true
-          # Generate report
-          lcov --list coverage.info > coverage.txt 2>/dev/null || echo "No coverage data"
-          genhtml coverage.info --output-directory docs/coverage --branch-coverage 2>/dev/null || true
+          # Check if we got any coverage data
+          if [ -s coverage.info ]; then
+            lcov --list coverage.info > coverage.txt 2>/dev/null
+            genhtml coverage.info --output-directory docs/coverage --branch-coverage 2>/dev/null || true
+          else
+            echo "No src/hdc coverage data found" > coverage.txt
+          fi
         else
-          echo "No coverage data files found" > coverage.txt
+          echo "No coverage build directory found" > coverage.txt
         fi
         cat coverage.txt
 
