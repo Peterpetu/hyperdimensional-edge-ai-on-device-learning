@@ -1,0 +1,122 @@
+# =============================================================================
+# DOXYGEN CONFIGURATION - API Documentation Generator
+# =============================================================================
+# Based on embedded industry documentation standards
+#
+# Usage: doxygen config/Doxyfile
+# Output: docs/doxygen/html/index.html
+# =============================================================================
+
+#---------------------------------------------------------------------------
+# Project Information
+#---------------------------------------------------------------------------
+PROJECT_NAME           = "Nano-Edge AI"
+PROJECT_NUMBER         = "2.0.0"
+PROJECT_BRIEF          = "On-Device Machine Learning with Hyperdimensional Computing"
+PROJECT_LOGO           =
+OUTPUT_DIRECTORY       = docs/doxygen
+
+#---------------------------------------------------------------------------
+# Build Configuration
+#---------------------------------------------------------------------------
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
+
+# For embedded: include implementation details
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+
+# Generate detailed documentation
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = YES
+
+# Inline simple member descriptions
+INLINE_SIMPLE_STRUCTS  = YES
+TYPEDEF_HIDES_STRUCT   = NO
+
+#---------------------------------------------------------------------------
+# Input Configuration
+#---------------------------------------------------------------------------
+INPUT                  = src \
+                         README.md
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.c *.h *.md
+RECURSIVE              = YES
+
+# Exclude test and build directories
+EXCLUDE                = test .pio build
+EXCLUDE_PATTERNS       = */test/* */.pio/*
+
+# Use README as main page
+USE_MDFILE_AS_MAINPAGE = README.md
+
+#---------------------------------------------------------------------------
+# Source Browser
+#---------------------------------------------------------------------------
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = NO
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+VERBATIM_HEADERS       = YES
+
+#---------------------------------------------------------------------------
+# Output Formats
+#---------------------------------------------------------------------------
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+GENERATE_XML           = NO
+GENERATE_MAN           = NO
+
+# HTML configuration
+HTML_OUTPUT            = html
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_TIMESTAMP         = YES
+HTML_DYNAMIC_SECTIONS  = YES
+GENERATE_TREEVIEW      = YES
+TREEVIEW_WIDTH         = 250
+
+#---------------------------------------------------------------------------
+# Diagrams (requires Graphviz - installed in CI)
+#---------------------------------------------------------------------------
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+
+#---------------------------------------------------------------------------
+# Warnings
+#---------------------------------------------------------------------------
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = YES
+WARN_FORMAT            = "$file:$line: $text"
+
+#---------------------------------------------------------------------------
+# Preprocessing
+#---------------------------------------------------------------------------
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+SEARCH_INCLUDES        = YES
+INCLUDE_PATH           = src/hal src/hdc src/app
+
+# AVR-specific predefined macros
+PREDEFINED             = F_CPU=16000000UL \
+                         __AVR_ATmega328P__ \
+                         PROGMEM= \
+                         __attribute__(x)=

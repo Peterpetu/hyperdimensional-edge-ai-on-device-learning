@@ -1,0 +1,200 @@
+# =============================================================================
+# EMBEDDED SYSTEMS PROJECT - PROFESSIONAL .GITIGNORE
+# =============================================================================
+# Based on Engineer/JPL, automotive (AUTOSAR), and aerospace industry standards.
+# Rule: Version control SOURCE files, not GENERATED files.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# BUILD ARTIFACTS
+# -----------------------------------------------------------------------------
+# Never commit compiled binaries - they must be reproducible from source
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# General build outputs
+build/
+out/
+bin/
+obj/
+*.o
+*.a
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.lss
+*.sym
+*.d
+
+# Precompiled headers
+*.gch
+*.pch
+
+# -----------------------------------------------------------------------------
+# IDE AND EDITOR FILES
+# -----------------------------------------------------------------------------
+# Each developer may use different tools - don't force IDE choice
+
+# Visual Studio Code (keep extensions.json for recommended extensions)
+.vscode/*
+!.vscode/extensions.json
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Eclipse
+.project
+.cproject
+.settings/
+
+# CLion / IntelliJ
+.idea/
+*.iml
+
+# Vim/Neovim
+*.swp
+*.swo
+*~
+tags
+.tags
+
+# Emacs
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# -----------------------------------------------------------------------------
+# OPERATING SYSTEM FILES
+# -----------------------------------------------------------------------------
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+nul
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+.directory
+.Trash-*
+
+# -----------------------------------------------------------------------------
+# DOCUMENTATION BUILD OUTPUTS
+# -----------------------------------------------------------------------------
+# Documentation source is versioned, generated docs are not
+
+docs/_build/
+docs/html/
+docs/latex/
+docs/xml/
+
+# Doxygen generated
+docs/doxygen/html/
+docs/doxygen/latex/
+docs/doxygen/xml/
+
+# -----------------------------------------------------------------------------
+# TEST AND COVERAGE OUTPUTS
+# -----------------------------------------------------------------------------
+
+test/results/
+test/reports/
+coverage/
+*.gcov
+*.gcda
+*.gcno
+*.info
+htmlcov/
+
+# Unity/CMock/Ceedling test framework
+ceedling/build/
+
+# -----------------------------------------------------------------------------
+# STATIC ANALYSIS OUTPUTS
+# -----------------------------------------------------------------------------
+
+analysis/
+*.pclint
+lint_output/
+cppcheck-build/
+*.sarif
+
+# -----------------------------------------------------------------------------
+# SECRETS AND CREDENTIALS
+# -----------------------------------------------------------------------------
+# NEVER commit secrets
+
+*.pem
+*.key
+*.crt
+*.env
+.env.*
+secrets/
+credentials/
+
+# -----------------------------------------------------------------------------
+# LOGS AND TEMPORARY FILES
+# -----------------------------------------------------------------------------
+
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+serial_logs/
+
+# -----------------------------------------------------------------------------
+# HARDWARE-SPECIFIC GENERATED FILES
+# -----------------------------------------------------------------------------
+
+*.jlink
+*.svd
+debug_session/
+*.eep
+flash_dump/
+
+# -----------------------------------------------------------------------------
+# PROJECT-SPECIFIC EXCLUSIONS
+# -----------------------------------------------------------------------------
+
+# Claude Code / AI Assistant files
+.claude/
+CLAUDE.md
+
+# Learning notes (personal documentation)
+project_notes_and_data/
+
+# =============================================================================
+# EXPLICITLY TRACKED (override ignores above)
+# =============================================================================
+!*.example
+!*.template
+!Makefile
+!CMakeLists.txt
+!platformio.ini

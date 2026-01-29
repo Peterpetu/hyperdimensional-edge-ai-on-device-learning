@@ -1,0 +1,54 @@
+{
+    "name": "Arduino ML - Engineer-Grade Dev Environment",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "platformio.platformio-ide",
+                "ms-vscode.cmake-tools",
+                "xaver.clang-format",
+                "jeff-hykin.better-cpp-syntax",
+                "cschlosser.doxdocgen",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "C_Cpp.default.cStandard": "c99",
+                "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+                "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+                "editor.formatOnSave": true,
+                "[c]": {
+                    "editor.defaultFormatter": "xaver.clang-format"
+                },
+                "files.associations": {
+                    "*.h": "c"
+                },
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    },
+
+    "postCreateCommand": "pip install platformio gcovr && pio platform install atmelavr native && chmod +x scripts/*.sh 2>/dev/null || true",
+
+    "remoteUser": "vscode",
+
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+
+    "workspaceFolder": "/workspace",
+
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+
+    "containerEnv": {
+        "PLATFORMIO_CORE_DIR": "/home/vscode/.platformio"
+    }
+}
