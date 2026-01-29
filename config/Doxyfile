@@ -77,7 +77,6 @@ HTML_OUTPUT            = html
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
 HTML_COLORSTYLE_GAMMA  = 80
-HTML_TIMESTAMP         = YES
 HTML_DYNAMIC_SECTIONS  = YES
 GENERATE_TREEVIEW      = YES
 TREEVIEW_WIDTH         = 250
@@ -86,7 +85,6 @@ TREEVIEW_WIDTH         = 250
 # Diagrams (requires Graphviz - installed in CI)
 #---------------------------------------------------------------------------
 HAVE_DOT               = YES
-CLASS_DIAGRAMS         = YES
 COLLABORATION_GRAPH    = YES
 GROUP_GRAPHS           = YES
 INCLUDE_GRAPH          = YES

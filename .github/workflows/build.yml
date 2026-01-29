@@ -91,8 +91,8 @@ jobs:
 
     - name: Check RAM Usage (max 70%)
       run: |
-        # Extract RAM percentage
-        RAM_LINE=$(pio run -e uno -t size 2>&1 | grep "RAM:")
+        # Extract RAM percentage (|| true to prevent grep from failing if no match)
+        RAM_LINE=$(pio run -e uno -t size 2>&1 | grep "RAM:" || true)
         echo "RAM usage: $RAM_LINE"
         # This is informational - actual enforcement would parse percentage
 
@@ -149,9 +149,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install platformio gcovr
         sudo apt-get install -y lcov
-
-    - name: Build with coverage
-      run: pio run -e coverage
 
     - name: Run tests with coverage
       run: pio test -e coverage -v || true
@@ -232,7 +229,9 @@ jobs:
         sudo apt-get install -y doxygen graphviz
 
     - name: Generate API documentation
-      run: doxygen config/Doxyfile
+      run: |
+        mkdir -p docs/doxygen
+        doxygen config/Doxyfile
 
     - name: Upload documentation
       uses: actions/upload-artifact@v4
